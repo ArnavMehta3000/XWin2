@@ -1,17 +1,18 @@
-project "Project"
+project "XWin2"
 	kind "WindowedApp"
 	language "C++"
 	cppdialect "C++Latest"
-	targetname "Project"
+	targetname "XWin2"
 
 	-- Base output directory
 	local baseDir = "%{wks.location}/Build/"
+	local debugDirectory = baseDir .. "%{cfg.architecture}-%{cfg.buildcfg}/%{prj.name}/"
 
 	targetdir(baseDir .. "%{cfg.architecture}-%{cfg.buildcfg}/%{prj.name}/")
 	objdir(baseDir .. "Intermediate/%{cfg.architecture}-%{cfg.buildcfg}/%{prj.name}/")
 	debugdir(baseDir .. "%{cfg.architecture}-%{cfg.buildcfg}/%{prj.name}/")
 
-	location "%{wks.location}/Project/"
+	location "%{wks.location}/XWin2/"
 
 	nuget
 	{
@@ -44,10 +45,10 @@ project "Project"
 	}
 
 	shadermodel ("5.0")
- 
+
 		shaderassembler("AssemblyCode")
 		local shader_dir = debugDirectory .. "Shaders/"
- 
+
 		-- Treat warnings as errors
 		shaderoptions({"/WX"})
 
@@ -57,11 +58,11 @@ project "Project"
 			flags("ExcludeFromBuild")
 			shaderobjectfileoutput(shader_dir.."%{file.basename}"..".cso")
 			shaderassembleroutput(shader_dir.."%{file.basename}"..".asm")
- 
+
 		filter("files:**PS.hlsl")
 			removeflags("ExcludeFromBuild")
 			shadertype("Pixel")
- 
+
 		filter("files:**VS.hlsl")
 			removeflags("ExcludeFromBuild")
 			shadertype("Vertex")
@@ -69,11 +70,11 @@ project "Project"
 		filter("files:**GS.hlsl")
 			removeflags("ExcludeFromBuild")
 			shadertype("Geometry")
-		
+
 		filter("files:**HS.hlsl")
 			removeflags("ExcludeFromBuild")
 			shadertype("Hull")
-		
+
 		filter("files:**DS.hlsl")
 			removeflags("ExcludeFromBuild")
 			shadertype("Domain")

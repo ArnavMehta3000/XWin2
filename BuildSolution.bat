@@ -14,6 +14,17 @@ if "%solutionFileName%"=="" (
     exit /b 1
 )
 
+rem Load VC
+if exist "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\" (
+    echo Loading x64 Professional
+    call "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat"
+) else (
+    if exist "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\" (
+        echo Loading x64 Community
+        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+    )
+)
+
 rem Check if an argument was passed
 if "%~1"=="" (
     echo Please specify a configuration argument:
