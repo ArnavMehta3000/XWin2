@@ -1,0 +1,11 @@
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+Build
+Tools/psClang/*
+*.vcxproj
+*.filters
+*.vcxproj.filters
+*.sln
+*/packages.config
+compile_commands.json
