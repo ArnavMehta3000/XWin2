@@ -25,7 +25,7 @@
 namespace XWin2
 {
 	static const UINT s_windowClassStyle = CS_VREDRAW | CS_HREDRAW | CS_DBLCLKS;
-	static LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	inline LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	namespace Events
 	{
@@ -628,7 +628,7 @@ namespace XWin2
 			return true;
 		}
 
-		LRESULT MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+		inline LRESULT MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 		Window(const Window&) = delete;
 		void operator=(const Window&) = delete;
@@ -660,7 +660,7 @@ namespace XWin2
 	};
 
 
-	LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+	inline LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (uMsg)
 		{
@@ -680,7 +680,7 @@ namespace XWin2
 			return ::DefWindowProc(hWnd, uMsg, wParam, lParam);
 	}
 
-	LRESULT Window::MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+	inline LRESULT Window::MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (uMsg)
 		{
