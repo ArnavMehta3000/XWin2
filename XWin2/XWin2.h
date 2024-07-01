@@ -668,7 +668,7 @@ namespace XWin2
 		{
 			LPCREATESTRUCT pCreateStruct = reinterpret_cast<LPCREATESTRUCT>(lParam);
 			Window* pObj = reinterpret_cast<Window*>(pCreateStruct->lpCreateParams);
-			::SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pCreateStruct->lpCreateParams));
+			::SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pObj));
 			return ::DefWindowProc(hWnd, uMsg, wParam, lParam);
 		}
 		}
